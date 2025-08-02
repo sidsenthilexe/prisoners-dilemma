@@ -1,7 +1,9 @@
-import game.Objects.GamePoints;
+package game;
+
+import game.objects.GamePoints;
 
 public class Round {
-    public void play(int player1Move, int player2Move, GamePoints gamePoints) {
+    public static void play(int player1Move, int player2Move, GamePoints gamePoints) {
 
         if (player1Move == 1 && player2Move == 1) {
 
