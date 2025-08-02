@@ -2,6 +2,8 @@ import game.LocalMultiplayer;
 
 import java.util.Scanner;
 
+// Std options: 1. Cooperate 2. Defect
+
 public class Main {
     public static void main(String[] args) {
         int chosenOption;
