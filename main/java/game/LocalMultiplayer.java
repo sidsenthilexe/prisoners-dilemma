@@ -8,6 +8,7 @@ import static game.Constants.PLAY_PROMPT;
 import static game.Constants.DISPLAY_END_POINTS;
 
 public class LocalMultiplayer {
+
     public static void playRound() {
         GamePoints points = new GamePoints();
         Scanner scan = new Scanner(System.in);
@@ -15,12 +16,19 @@ public class LocalMultiplayer {
         multiplayerRound(points, scan);
 
         System.out.println(DISPLAY_END_POINTS(points));
-
-        }
-
     }
 
-    public static void playRounds(int numRounds) {
+    public static void playMultipleRounds(int numRounds) {
+        GamePoints points = new GamePoints();
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("This Local Multiplayer game will run for " + numRounds + " rounds");
+
+        for (int i = 0; i < numRounds; i++) {
+            multiplayerRound(points, scan);
+        }
+
+        System.out.println(DISPLAY_END_POINTS(points));
 
     }
 
@@ -54,4 +62,5 @@ public class LocalMultiplayer {
         Round.play(player1Move, player2Move, points);
 
     }
+
 }

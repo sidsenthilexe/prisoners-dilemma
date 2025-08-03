@@ -17,7 +17,17 @@ public class Main {
 
             switch (chosenOption) {
                 case 1:
-                    LocalMultiplayer.playRound();
+                    System.out.println("[1] Play Single Round\n[2] Play Multiple Rounds");
+                    chosenOption = scan.nextInt();
+
+                    if (chosenOption == 1) {
+                        LocalMultiplayer.playRound();
+                    } else {
+                        System.out.println("Enter number of rounds to be played");
+                        chosenOption = scan.nextInt();
+                        LocalMultiplayer.playMultipleRounds(chosenOption);
+                    }
+
                     break;
                 case 2:
                     System.out.println("Exiting...");
