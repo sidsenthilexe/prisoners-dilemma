@@ -29,7 +29,6 @@ public class LocalMultiplayer {
         }
 
         System.out.println(DISPLAY_END_POINTS(points));
-
     }
 
     private static void multiplayerRound(GamePoints points, Scanner scan) {

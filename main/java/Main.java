@@ -1,6 +1,10 @@
 import game.LocalMultiplayer;
 
+import static game.Constants.HELP;
+
 import java.util.Scanner;
+
+
 
 // Std options: 1. Cooperate 2. Defect
 
@@ -12,11 +16,14 @@ public class Main {
 
         do {
             Scanner scan = new Scanner(System.in);
-            System.out.println("[1] Play Local Multiplayer\n[2] Exit");
+            System.out.println("[1] Display game help\n[2] Play Local Multiplayer\n[3] Exit");
             chosenOption = scan.nextInt();
 
             switch (chosenOption) {
                 case 1:
+                    System.out.println(HELP);
+                    break;
+                case 2:
                     System.out.println("[1] Play Single Round\n[2] Play Multiple Rounds");
                     chosenOption = scan.nextInt();
 
@@ -29,7 +36,7 @@ public class Main {
                     }
 
                     break;
-                case 2:
+                case 3:
                     System.out.println("Exiting...");
                     break;
                 default:
@@ -37,6 +44,6 @@ public class Main {
                     break;
             }
 
-        } while (chosenOption != 2);
+        } while (chosenOption != 3);
     }
 }

@@ -16,4 +16,6 @@ public final class Constants {
         }
     }
 
+    public static final String HELP = "The Prisoner's Dilemma Game is played between 2 players. Each round, each player can choose to cooperate or defect.\nIf both players cooperate, they each receive 3 points.\nIf one player defects while the other cooperates,\nthe defecting player receives 5 points and the cooperating player receives 0.\nIf both players defect, they each receive 1 point.";
+
 }
