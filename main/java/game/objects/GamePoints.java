@@ -70,6 +70,31 @@ public class GamePoints {
         }
     }
 
+    public int getLoser() {
+        return switch(getWinner()) {
+            case (1) -> 2;
+            case (2) -> 1;
+            case (0) -> 0;
+            default -> 0;
+        };
+    }
+
+    public int getWinnerScore() {
+        return switch (getWinner()) {
+            case (1), (0) -> getPlayer1Score();
+            case (2) -> getPlayer2Score();
+            default -> 0;
+        };
+    }
+
+    public int getLoserScore() {
+        return switch (getLoser()) {
+            case (1), (0) -> getPlayer1Score();
+            case (2) -> getPlayer2Score();
+            default -> 0;
+        };
+    }
+
     public String toString() {
         if (getWinner() != 0) {
             return "Player " + getWinner() + " wins";
