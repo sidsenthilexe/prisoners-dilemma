@@ -46,17 +46,13 @@ public class HumanVsBot {
             }
         } while (!validMove);
 
-        switch (botNumber) {
-            case 1:
-                botMove = BotMoves.TitForTat(points);
-                break;
-            case 2:
-                botMove = BotMoves.AlwaysDefect();
-            case 3:
-                botMove = BotMoves.AlwaysCooperate();
-            case 4:
-                botMove = BotMoves.TitForTwoTats(points);
-        }
+        botMove = switch (botNumber) {
+            case 1 -> BotMoves.TitForTat(points, 2);
+            case 2 -> BotMoves.AlwaysDefect();
+            case 3 -> BotMoves.AlwaysCooperate();
+            case 4 -> BotMoves.TitForTwoTats(points, 2);
+            default -> 1;
+        };
 
         Round.play(player1Move, botMove, points);
 

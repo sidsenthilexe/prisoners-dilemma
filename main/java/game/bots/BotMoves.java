@@ -4,18 +4,33 @@ import game.objects.GamePoints;
 
 public class BotMoves {
 
-    public static int TitForTat(GamePoints points) {
-        int playerLastMove;
-        if (points.getPlayer1Size() > 0) {
-            playerLastMove = points.getPlayer1Move(points.getPlayer1Size());
-        } else {
-            playerLastMove = 3;
-        }
+    public static int TitForTat(GamePoints points, int playerNumber) {
+        if (playerNumber == 2) {
+            int playerLastMove;
+            if (points.getPlayer1Size() > 0) {
+                playerLastMove = points.getPlayer1Move(points.getPlayer1Size());
+            } else {
+                playerLastMove = 3;
+            }
 
-        if (DidPlayerDefect(playerLastMove)) {
-            return 2;
+            if (DidPlayerDefect(playerLastMove)) {
+                return 2;
+            } else {
+                return 1;
+            }
         } else {
-            return 1;
+            int playerLastMove;
+            if (points.getPlayer2Size() > 0) {
+                playerLastMove = points.getPlayer2Move(points.getPlayer2Size());
+            } else {
+                playerLastMove = 3;
+            }
+
+            if (DidPlayerDefect(playerLastMove)) {
+                return 2;
+            } else {
+                return 1;
+            }
         }
     }
 
@@ -27,25 +42,44 @@ public class BotMoves {
         return 1;
     }
 
-    public static int TitForTwoTats(GamePoints points) {
-        boolean enoughMoves;
-        int playerMove1 = 3;
-        int playerMove2 = 3;
+    public static int TitForTwoTats(GamePoints points, int playerNumber) {
+        if (playerNumber == 2) {
+            boolean enoughMoves;
+            int playerMove1 = 3;
+            int playerMove2 = 3;
 
-        if (points.getPlayer1Size() < 2) {
-            enoughMoves = false;
+            if (points.getPlayer1Size() < 2) {
+                enoughMoves = false;
+            } else {
+                enoughMoves = true;
+                playerMove1 = points.getPlayer1Move(points.getPlayer1Size());
+                playerMove2 = points.getPlayer1Move((points.getPlayer1Size() - 1));
+            }
+
+            if (enoughMoves && DidPlayerDefect(playerMove1) && DidPlayerDefect(playerMove2)) {
+                return 2;
+            } else {
+                return 1;
+            }
         } else {
-            enoughMoves = true;
-            playerMove1 = points.getPlayer1Move(points.getPlayer1Size());
-            playerMove2 = points.getPlayer1Move((points.getPlayer1Size()-1));
-        }
+            boolean enoughMoves;
+            int playerMove1 = 3;
+            int playerMove2 = 3;
 
-        if (enoughMoves && DidPlayerDefect(playerMove1) && DidPlayerDefect(playerMove2)) {
-            return 2;
-        } else {
-            return 1;
-        }
+            if (points.getPlayer2Size() < 2) {
+                enoughMoves = false;
+            } else {
+                enoughMoves = true;
+                playerMove1 = points.getPlayer1Move(points.getPlayer1Size());
+                playerMove2 = points.getPlayer1Move((points.getPlayer1Size()-1));
+            }
 
+            if (enoughMoves && DidPlayerDefect(playerMove1) && DidPlayerDefect(playerMove2)) {
+                return 2;
+            } else {
+                return 1;
+            }
+        }
     }
 
     private static boolean DidPlayerDefect(int playerMove) {
