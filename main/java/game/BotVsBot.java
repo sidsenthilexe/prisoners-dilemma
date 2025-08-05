@@ -3,9 +3,32 @@ package game;
 import game.bots.BotMoves;
 import game.objects.GamePoints;
 
+import static game.Constants.DISPLAY_END_POINTS;
+
 public class BotVsBot {
 
-    private static void botVBotRound(GamePoints points, int bot1, int bot2) {
+    public static void playRound(int bot1, int bot2) {
+        GamePoints points = new GamePoints();
+
+        botRound(points, bot1, bot2);
+
+        System.out.println(DISPLAY_END_POINTS(points));
+    }
+
+    public static void playMultipleRounds(int numRounds, int bot1, int bot2) {
+        GamePoints points = new GamePoints();
+
+        System.out.println("This Bot vs Bot game will run for " + numRounds + " rounds");
+
+        for (int i = 0; i < numRounds; i++) {
+            botRound(points, bot1, bot2);
+        }
+
+        System.out.println(DISPLAY_END_POINTS(points));
+    }
+
+
+    public static void botRound(GamePoints points, int bot1, int bot2) {
 
         int bot1Move = botMove(points, bot1, 1);
 

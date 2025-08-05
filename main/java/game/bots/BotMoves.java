@@ -8,7 +8,7 @@ public class BotMoves {
         if (playerNumber == 2) {
             int playerLastMove;
             if (points.getPlayer1Size() > 0) {
-                playerLastMove = points.getPlayer1Move(points.getPlayer1Size());
+                playerLastMove = points.getPlayer1Move(points.getPlayer1Size()-1);
             } else {
                 playerLastMove = 3;
             }
@@ -21,7 +21,7 @@ public class BotMoves {
         } else {
             int playerLastMove;
             if (points.getPlayer2Size() > 0) {
-                playerLastMove = points.getPlayer2Move(points.getPlayer2Size());
+                playerLastMove = points.getPlayer2Move(points.getPlayer2Size()-1);
             } else {
                 playerLastMove = 3;
             }
@@ -52,8 +52,8 @@ public class BotMoves {
                 enoughMoves = false;
             } else {
                 enoughMoves = true;
-                playerMove1 = points.getPlayer1Move(points.getPlayer1Size());
-                playerMove2 = points.getPlayer1Move((points.getPlayer1Size() - 1));
+                playerMove1 = points.getPlayer1Move(points.getPlayer1Size() - 1);
+                playerMove2 = points.getPlayer1Move(points.getPlayer1Size() - 2);
             }
 
             if (enoughMoves && DidPlayerDefect(playerMove1) && DidPlayerDefect(playerMove2)) {

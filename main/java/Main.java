@@ -1,7 +1,9 @@
+import game.BotVsBot;
 import game.HumanVsBot;
 import game.LocalMultiplayer;
 
 import static game.Constants.HELP;
+import static game.Constants.BOTS_LIST;
 
 import java.util.Scanner;
 
@@ -17,7 +19,7 @@ public class Main {
 
         do {
             Scanner scan = new Scanner(System.in);
-            System.out.println("[1] Display game help\n[2] Play Local Multiplayer\n[3] Play against bots\n[4] Exit");
+            System.out.println("[1] Display game help\n[2] Play Local Multiplayer\n[3] Play against bots\n[4] Bot vs Bot Games\n[5] Exit");
             chosenOption = scan.nextInt();
 
             switch (chosenOption) {
@@ -57,6 +59,26 @@ public class Main {
                     break;
 
                 case 4:
+                    System.out.println("Select bot 1\n" + BOTS_LIST);
+                    int bot1 = scan.nextInt();
+
+                    System.out.println("Select bot 2\n" + BOTS_LIST);
+                    int bot2 = scan.nextInt();
+
+                    System.out.println("[1] Run Single Round\n[2] Run Multiple Rounds");
+                    chosenOption = scan.nextInt();
+
+                    if(chosenOption == 1) {
+                        BotVsBot.playRound(bot1, bot2);
+                    } else {
+                        System.out.println("Enter number of rounds to be played");
+                        chosenOption = scan.nextInt();
+                        BotVsBot.playMultipleRounds(chosenOption, bot1, bot2);
+                    }
+
+                    break;
+
+                case 5:
                     System.out.println("Exiting...");
                     break;
 

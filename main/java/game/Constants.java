@@ -8,6 +8,8 @@ public final class Constants {
 
     public static final String PLAY_PROMPT = "[1] Cooperate\n[2] Defect";
 
+    public static final String BOTS_LIST = "[1] Tit for Tat\n[2] Always Defect\n[3] Always Cooperate\n[4] Tit for Two Tats";
+
     public static String DISPLAY_END_POINTS(GamePoints points) {
         if (points.getWinner() != 0) {
             return "Player " + points.getWinner()  + " wins with " + points.getWinnerScore() + " points\nPlayer " + points.getLoser() + " lost with " + points.getLoserScore() + " points";
