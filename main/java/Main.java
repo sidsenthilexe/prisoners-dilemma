@@ -7,10 +7,6 @@ import static game.Constants.BOTS_LIST;
 
 import java.util.Scanner;
 
-
-
-// Std options: 1. Cooperate 2. Defect
-
 public class Main {
     public static void main(String[] args) {
         int chosenOption;
@@ -24,10 +20,12 @@ public class Main {
 
             switch (chosenOption) {
                 case 1:
+
                     System.out.println(HELP);
                     break;
 
                 case 2:
+
                     System.out.println("[1] Play Single Round\n[2] Play Multiple Rounds");
                     chosenOption = scan.nextInt();
 
@@ -59,6 +57,7 @@ public class Main {
                     break;
 
                 case 4:
+
                     System.out.println("Select bot 1\n" + BOTS_LIST);
                     int bot1 = scan.nextInt();
 
@@ -79,6 +78,7 @@ public class Main {
                     break;
 
                 case 5:
+
                     System.out.println("Exiting...");
                     break;
 
