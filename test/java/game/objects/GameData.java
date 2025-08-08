@@ -1,5 +1,6 @@
 package game.objects;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import game.Constants.Move;
 import game.Constants.PlayerType;
@@ -111,6 +112,21 @@ public class GameData {
         }
     }
 
+    public Move getInput() {
+        Scanner scan = new Scanner(System.in);
+        boolean failedInput = false;
+        Move output = null;
+        do {
+            if (failedInput) System.out.println("Invalid Input");
+            System.out.println("[1] COOPERATE\n[2] DEFECT");
+            int userInput = scan.nextInt();
 
+            if (userInput == 1) output = Move.COOPERATE;
+            else if (userInput == 2) output = Move.DEFECT;
+            else failedInput = true;
+        } while (failedInput);
+
+        return output;
+    }
 
 }
