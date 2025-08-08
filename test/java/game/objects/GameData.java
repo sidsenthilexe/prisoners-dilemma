@@ -6,6 +6,7 @@ import game.Constants.Move;
 import game.Constants.PlayerType;
 import game.Constants.PlayerID;
 import game.Constants.Points;
+import game.Bots;
 
 public class GameData {
     private int round;
@@ -112,21 +113,25 @@ public class GameData {
         }
     }
 
-    public Move getInput() {
-        Scanner scan = new Scanner(System.in);
-        boolean failedInput = false;
-        Move output = null;
-        do {
-            if (failedInput) System.out.println("Invalid Input");
-            System.out.println("[1] COOPERATE\n[2] DEFECT");
-            int userInput = scan.nextInt();
+    public Move getInput(PlayerType playerType, PlayerID playerID) {
+        if (playerType == PlayerType.PLAYER) {
+            Scanner scan = new Scanner(System.in);
+            boolean failedInput = false;
+            Move output = null;
+            do {
+                if (failedInput) System.out.println("Invalid Input");
+                System.out.println("[1] COOPERATE\n[2] DEFECT");
+                int userInput = scan.nextInt();
 
-            if (userInput == 1) output = Move.COOPERATE;
-            else if (userInput == 2) output = Move.DEFECT;
-            else failedInput = true;
-        } while (failedInput);
+                if (userInput == 1) output = Move.COOPERATE;
+                else if (userInput == 2) output = Move.DEFECT;
+                else failedInput = true;
+            } while (failedInput);
 
-        return output;
+            return output;
+        } else {
+            return Bots.botMove(playerID);
+        }
     }
 
 }
