@@ -113,7 +113,18 @@ public class GameData {
         }
     }
 
-    public Move getInput(PlayerType playerType, PlayerID playerID) {
+    public Move getInput(int playerNumber) {
+
+        PlayerType playerType = null;
+        PlayerID playerID = null;
+        if (playerNumber == 1) {
+            playerType = player1Type;
+            playerID = player1ID;
+        } else {
+            playerType = player2Type;
+            playerID = player2ID;
+        }
+
         if (playerType == PlayerType.PLAYER) {
             Scanner scan = new Scanner(System.in);
             boolean failedInput = false;
@@ -132,6 +143,7 @@ public class GameData {
         } else {
             return Bots.botMove(playerID);
         }
+
     }
 
 }
